@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="search">
+    <app-search-form
+      [carModel]="chosenCarModel"
+      (carNameTriggered)="updateCar()"
+    ></app-search-form>
+  </div>
+  <ng-container *ngIf="data.length else emptyCarsList">
+    <div class="wrapper">
+      <div class="clear">
+        <button class="btn-green" (click)="clearAll()">Clear all</button>
+      </div>
+      <div class="car-names-wrapper">
+        <app-car *ngFor="let car of data" [carItem]="car"
+                 (carObj)="removeCar(car)"
+        ></app-car>
+<!--        <div class="car-names" *ngFor="let car of data">-->
+<!--          <div class="brand">{{ car.brand }}</div>-->
+<!--          <div class="model-wrap">-->
+<!--            <div class="model">{{ car.model }}</div>-->
+<!--          </div>-->
+<!--          <div class="close"-->
+<!--               (click)="removeCar(car)"-->
+<!--          ><img src="assets/images/red-x.png" alt="close"></div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyCarsList>
+    <div class="empty-wrapper">
+      <div class="empty-content">
+        <h1>Empty list...</h1>
+        <h2>Try to reload</h2>
+        <button class="btn-green">Reload</button>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

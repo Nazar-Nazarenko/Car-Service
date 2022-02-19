@@ -1,0 +1,13 @@
+<form [formGroup]="chooseCarBrand">
+  <div class="input-search">
+    <label>
+      <input type="text"
+             placeholder="Enter car brand"
+             [(ngModel)]="carName"
+             formControlName="{{CONTROL_NAMES.carNameInput}}">
+    </label>
+  </div>
+  <div class="entered">{{carName}}</div>
+  <div class="entered">{{carModel}}</div>
+  <button class="btn-green" type="button" (click)="save()">Submit</button>
+</form>
