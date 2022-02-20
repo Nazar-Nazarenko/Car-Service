@@ -4,7 +4,9 @@ export enum SearchFormConfig {
 export interface Car {
   brand: string;
   model: string;
-  price: number;
   fuel: string;
   id: number;
+  engine: string;
+  photo: string;
+  wiki: string;
 }

@@ -8,6 +8,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { TimerComponent } from './components/timer/timer.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { CarComponent } from './components/car/car.component';
+import { SelectedCarComponent } from './components/selected-car/selected-car.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CarComponent } from './components/car/car.component';
     CarsComponent,
     SearchFormComponent,
     TimerComponent,
-    CarComponent
+    CarComponent,
+    SelectedCarComponent
   ],
   imports: [
     BrowserModule,

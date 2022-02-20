@@ -2,10 +2,16 @@
   <h1>My App</h1>
   <div class="wrap">
     <nav>
-      <div class="link">
+      <div class="link" [routerLinkActiveOptions]="{ exact: true}"
+        routerLinkActive="active">
+        <a routerLink="/">Home</a>
+      </div>
+      <div class="link"
+           routerLinkActive="active">
         <a routerLink="timer">Timer</a>
       </div>
-      <div class="link">
+      <div class="link"
+           routerLinkActive="active">
         <a routerLink="cars">Cars list</a>
       </div>
     </nav>

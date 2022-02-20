@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {TimerComponent} from "./components/timer/timer.component";
-import {CarsComponent} from "./components/cars/cars.component";
+import {TimerComponent} from './components/timer/timer.component';
+import {CarsComponent} from './components/cars/cars.component';
+import {SelectedCarComponent} from './components/selected-car/selected-car.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,11 @@ const routes: Routes = [
   {
     path: 'cars',
     component: CarsComponent
-  }
+  },
+  {
+    path: 'selected-car/:id/:brand',
+    component: SelectedCarComponent
+  },
 ];
 
 @NgModule({
