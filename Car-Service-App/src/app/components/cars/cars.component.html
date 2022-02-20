@@ -12,7 +12,13 @@
       </div>
       <div class="car-names-wrapper">
         <app-car *ngFor="let car of cars" [carItem]="car"
-                 [routerLink]="['/selected-car', car.id, car.brand]"
+                 [routerLink]="['/selected-car',
+                 car.id,
+                 car.brand,
+                 car.model,
+                 car.engine,
+                 car.price
+                 ]"
                  (carObj)="removeCar(car)"></app-car>
       </div>
     </div>

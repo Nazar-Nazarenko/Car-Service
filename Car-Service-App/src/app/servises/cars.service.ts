@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {of, Subscription} from 'rxjs';
-import {Car} from '../components/search-form/search-form.config';
-import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +53,7 @@ export class CarsService {
       price: 80000,
       fuel: 'electric',
       id: 5,
-      engine: 'DUAL',
+      engine: 'DUAL-electric',
       photo: '',
       wiki: ''
     },

@@ -9,4 +9,5 @@ export interface Car {
   engine: string;
   photo: string;
   wiki: string;
+  price: number;
 }
