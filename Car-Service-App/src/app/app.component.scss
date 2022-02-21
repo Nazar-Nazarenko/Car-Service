@@ -1,3 +1,20 @@
+@import "components/global-styles/buttons";
+.login-block {
+  .wrap {
+    display: flex;
+    justify-content: flex-end;
+    span {
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    .btn-block {
+      margin-bottom: 10px;
+      button {
+        margin-right: 10px;
+      }
+    }
+  }
+}
 .wrap {
   nav {
     display: flex;

@@ -1,5 +1,19 @@
 <div class="container">
-  <h1>My App</h1>
+  <div class="login-block">
+    <div class="wrap">
+      <span> Please log in first</span>
+      <div class="btn-block">
+        <button type="button"
+                class="btn sm blue"
+                [disabled]="isLogged"
+                (click)="changeAuthStatus('login')">Log In</button>
+        <button type="button"
+                class="btn sm red"
+                [disabled]="isLoggedOut"
+                (click)="changeAuthStatus('logout')">Log Out</button>
+      </div>
+    </div>
+  </div>
   <div class="wrap">
     <nav>
       <div class="link" [routerLinkActiveOptions]="{ exact: true}"

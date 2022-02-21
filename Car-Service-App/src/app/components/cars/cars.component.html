@@ -8,7 +8,7 @@
   <ng-container *ngIf="cars.length else emptyCarsList">
     <div class="wrapper">
       <div class="clear">
-        <button class="btn-green" (click)="clearAll()">Clear all</button>
+        <button class="btn btn-green" (click)="clearAll()">Clear all</button>
       </div>
       <div class="car-names-wrapper">
         <app-car *ngFor="let car of cars" [carItem]="car"
