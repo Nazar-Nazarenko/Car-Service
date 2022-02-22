@@ -1,7 +1,7 @@
 <div class="container">
   <div class="login-block">
     <div class="wrap">
-      <span> Please log in first</span>
+      <span *ngIf="isLoggedOut" [ngClass]="{'highlight': isHighlighted}"> Please log in first</span>
       <div class="btn-block">
         <button type="button"
                 class="btn sm blue"
@@ -29,6 +29,9 @@
         <a routerLink="cars">Cars list</a>
       </div>
     </nav>
-    <router-outlet></router-outlet>
+    <div class="content-wrapper"
+         (click)="highlightText()">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

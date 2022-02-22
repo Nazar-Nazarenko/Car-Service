@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'Car-Service-App';
   public isLogged = false;
   public isLoggedOut = true;
+  public isHighlighted = false;
 
   constructor( private auth: AuthService) {}
 
@@ -22,6 +23,11 @@ export class AppComponent {
       this.auth.logOut();
       this.isLogged = false;
       this.isLoggedOut = true;
+      this.isHighlighted = false;
     }
+  }
+
+  public highlightText(): any {
+    this.isHighlighted = this.isLoggedOut;
   }
 }

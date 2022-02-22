@@ -12,6 +12,7 @@
 .disabled {
   opacity: 0.4;
   cursor: auto;
+  pointer-events: none;
 }
 
 .btn-green {
@@ -44,6 +45,12 @@
 .blue {
   background: dodgerblue;
   color: rgba( 255, 255, 255, 0.8);
+  &:hover {
+    background: cornflowerblue;
+  }
+  &:active {
+    background: royalblue;
+  }
   &:disabled {
     @extend .disabled
   }
@@ -53,6 +60,12 @@
   color: rgba( 255, 255, 255, 0.9);
   &:disabled {
     @extend .disabled
+  }
+  &:hover {
+    background: red;
+  }
+  &:active {
+    background: maroon;
   }
 }
 
