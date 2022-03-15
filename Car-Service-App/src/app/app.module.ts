@@ -9,6 +9,7 @@ import { TimerComponent } from './components/timer/timer.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { CarComponent } from './components/car/car.component';
 import { SelectedCarComponent } from './components/selected-car/selected-car.component';
+import { TooltipDirective } from './directives/tooltip.directive';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,17 @@ import { SelectedCarComponent } from './components/selected-car/selected-car.com
     SearchFormComponent,
     TimerComponent,
     CarComponent,
-    SelectedCarComponent
+    SelectedCarComponent,
+    TooltipDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    Document
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
