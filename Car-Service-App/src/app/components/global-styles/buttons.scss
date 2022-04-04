@@ -7,7 +7,13 @@
   background-color: transparent;
   cursor: pointer;
   outline: none;
-
+}
+.general {
+  font-size: 18px;
+  border: none;
+  margin: 10px 0;
+  width: 90px;
+  height: 32px;
 }
 .disabled {
   opacity: 0.4;
@@ -16,13 +22,9 @@
 }
 
 .btn-green {
-  font-size: 18px;
   background: forestgreen;
   color: white;
-  border: none;
-  margin: 10px 0;
-  width: 90px;
-  height: 32px;
+  @extend .general;
   &:hover {
     box-shadow: 0 1px 2px 4px rgba(255, 255, 255, 0.2);
     transition: 300ms;
@@ -37,9 +39,22 @@
   }
 }
 
-
-.general {
-
+.btn-grey {
+  @extend .general;
+  background: darkgrey;
+  color: black;
+  &:hover {
+    box-shadow: 0 1px 2px 4px rgba(0, 0, 0, 0.07);
+    transition: 300ms;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+  }
+  &:active {
+    color: white;
+    background: darkgray;
+  }
+  &:disabled {
+    @extend .disabled
+  }
 }
 
 .blue {

@@ -10,6 +10,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { CarComponent } from './components/car/car.component';
 import { SelectedCarComponent } from './components/selected-car/selected-car.component';
 import { TooltipDirective } from './directives/tooltip.directive';
+import { ModalDirective } from './directives/modal.directive';
+import { ModalComponent } from './components/modal/modal.component';
+import { StopPropagationDirective } from './directives/stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { TooltipDirective } from './directives/tooltip.directive';
     CarComponent,
     SelectedCarComponent,
     TooltipDirective,
+    ModalDirective,
+    ModalComponent,
+    StopPropagationDirective,
   ],
   imports: [
     BrowserModule,

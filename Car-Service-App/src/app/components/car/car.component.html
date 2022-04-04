@@ -1,10 +1,14 @@
-<div class="car-info">
-  <div class="name">{{ carItem.brand }}</div>
-  <div class="model-wrap">
-    <div class="model">{{ carItem.model }}</div>
+<div class="car-inf0-wrap">
+  <div class="car-info">
+    <div class="name">{{ carItem.brand }}</div>
+    <div class="model-wrap">
+      <div class="model">{{ carItem.model }}</div>
+    </div>
+    <div class="close"
+         appStopPropagation
+         appTooltip
+         (click)="delete()"
+    ><img src="assets/images/red-x.png" alt="close"></div>
   </div>
-  <div class="close"
-       appTooltip
-       (click)="removeCar()"
-  ><img src="assets/images/red-x.png" alt="close"></div>
+  <div #modal class="modal-window"></div>
 </div>

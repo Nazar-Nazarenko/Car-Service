@@ -26,14 +26,17 @@ export class TooltipDirective {
     }
   }
 
-  public create(): void {
-    const element = this.elementRef.nativeElement;
+  @HostListener('click') onMouseClick(): void {
+    if (this.tooltip) {
+      this.hide();
+    }
+  }
 
+  public create(): void {
     this.tooltip = this.renderer.createElement('span');
     this.renderer.addClass(this.tooltip, 'info-tooltip');
     this.renderer.appendChild(this.tooltip, this.tooltipText);
     this.renderer.appendChild( this.document.body, this.tooltip);
-    // console.log('enter', this.tooltip);
   }
 
   public hide(): void {
@@ -43,7 +46,6 @@ export class TooltipDirective {
     this.renderer.removeClass(this.tooltip, 'info-tooltip');
     this.renderer.removeChild( this.tooltip, this.tooltipText);
     this.tooltip = null;
-    // console.log('leave', this.tooltip);
   }
 
 }
