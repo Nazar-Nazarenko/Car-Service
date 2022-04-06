@@ -17,7 +17,7 @@ export class ModalService {
     this.componentRef.instance.title = title;
     this.componentRef.instance.description = description;
     this.componentRef.instance.closeModal.subscribe(() => this.closeModal());
-    this.componentRef.instance.confirmModal.subscribe(() => this.confirm());
+    this.componentRef.instance.confirmModal.subscribe(() => this.confirmModal());
     this.componentSubscriber = new Subject<string>();
     return this.componentSubscriber.asObservable();
   }
@@ -27,7 +27,7 @@ export class ModalService {
     this.componentRef.destroy();
   }
 
-  public confirm(): void {
+  public confirmModal(): void {
     this.componentSubscriber.next('confirm');
     this.closeModal();
   }

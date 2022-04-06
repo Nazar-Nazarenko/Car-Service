@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CarsService} from '../../servises/cars.service';
-import {Car} from '../search-form/search-form.config';
+import {Car} from '../add-edit-form/add-edit-form.config';
 import {Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
 

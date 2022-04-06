@@ -1,4 +1,4 @@
-export enum SearchFormConfig {
+export enum AddEditFormConfig {
   carNameInput = 'carNameInput'
 }
 export interface Car {

@@ -1,14 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {SearchFormConfig} from "./search-form.config";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AddEditFormConfig} from './add-edit-form.config';
 
 @Component({
-  selector: 'app-search-form',
-  templateUrl: './search-form.component.html',
-  styleUrls: ['./search-form.component.scss']
+  selector: 'app-add-edit-form',
+  templateUrl: './add-edit-form.component.html',
+  styleUrls: ['./add-edit-form.component.scss']
 })
-export class SearchFormComponent implements OnInit {
-  readonly CONTROL_NAMES = SearchFormConfig;
+export class AddEditFormComponent implements OnInit {
+  readonly CONTROL_NAMES = AddEditFormConfig;
 
   @Input() public carBrand: string | undefined;
   @Input() public carModel: string | undefined;

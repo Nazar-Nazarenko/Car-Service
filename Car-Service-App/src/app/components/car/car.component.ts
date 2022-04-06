@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
-import { Car } from '../search-form/search-form.config';
+import { Car } from '../add-edit-form/add-edit-form.config';
 import { ModalService } from '../../servises/modal/modal.service';
 import {Subscription} from 'rxjs';
 
@@ -40,7 +40,6 @@ export class CarComponent implements OnInit, OnDestroy {
 
 
   removeCar(): void {
-    console.log('removeCar()');
     this.carObj.emit();
   }
 

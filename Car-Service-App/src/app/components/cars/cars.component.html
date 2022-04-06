@@ -1,9 +1,9 @@
 <div class="content">
   <div class="search">
-    <app-search-form
+    <app-add-edit-form
       [carModel]="chosenCarModel"
       (carNameTriggered)="updateCar()"
-    ></app-search-form>
+    ></app-add-edit-form>
   </div>
   <ng-container *ngIf="cars.length else emptyCarsList">
     <div class="wrapper">
