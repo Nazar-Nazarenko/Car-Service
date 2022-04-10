@@ -1,0 +1,28 @@
+@import "../../components/global-styles/buttons";
+.form-wrap {
+  background: rgba( 255, 255, 255, 0.1);
+  .block {
+    padding: 20px 35px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    .wrap-label {
+      label {
+        display: block;
+        color: rgba( 0, 0, 0, 0.5);
+      }
+    }
+  }
+  input {
+    padding: 8px;
+    font-size: 16px;
+    width: 25rem;
+  }
+  .btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin-right: 35px;
+    }
+  }
+}

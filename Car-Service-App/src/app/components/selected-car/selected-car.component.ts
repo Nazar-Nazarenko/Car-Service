@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 
 @Component({
@@ -9,13 +10,20 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class SelectedCarComponent implements OnInit {
 
-  public id: string | any;
-  public brand: string | any;
-  public model: string | any;
-  public engine: string | any;
-  public price: number | any;
+  public id = '';
+  public brand = '';
+  public model = '';
+  public engine = '';
+  public price = '';
 
-  constructor( private activateRoute: ActivatedRoute ) {
+  public singleCarForm = new FormGroup({});
+  public initData = '';
+
+  get isFormChanged(): boolean {
+    return this.initData === JSON.stringify( this.singleCarForm?.value);
+  }
+
+  constructor( private activateRoute: ActivatedRoute, private formBuilder: FormBuilder, ) {
   }
 
   ngOnInit(): void {
@@ -24,6 +32,24 @@ export class SelectedCarComponent implements OnInit {
     this.model = this.activateRoute.snapshot.params['model'];
     this.engine = this.activateRoute.snapshot.params['engine'];
     this.price = this.activateRoute.snapshot.params['price'];
+    this.initForm();
+    this.initData = JSON.stringify( this.singleCarForm?.value);
+    console.log('this.initData', this.initData);
+  }
+
+  private initForm(): void {
+    this.singleCarForm = this.formBuilder.group( {
+      brand: [ this.brand || ''],
+      model: [ this.model || '' ],
+      engine: [ this.engine || '' ],
+      price: [ this.price  || '']
+    });
+  }
+
+  public save(): void {
+    if (this.singleCarForm.invalid) {
+      return;
+    }
   }
 
 }

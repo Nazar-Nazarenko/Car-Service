@@ -38,11 +38,4 @@ export class CarsComponent implements OnInit {
     }
   }
 
-  clearAll(): void {
-    this.cars = [];
-  }
-
-  reload(): void {
-  }
-
 }

@@ -1,17 +1,52 @@
-<div class="wrap">
-  <div class="top">
-    <div class="image-wrap"></div>
-    <div class="brand">
-      <span>Brand:</span>{{ brand }}</div>
-    <div class="model">
-      <span> Model:</span> {{ model }}</div>
-  </div>
-  <div class="main-info-wrap">
-    <div class="fuel"></div>
-    <div class="engine">
-      <span> Engine:</span>{{engine}}</div>
-    <div class="price">
-      <span> Price:</span>{{price}}</div>
-    <div class="wiki"></div>
+<div class="form-wrap">
+  <form [formGroup]="singleCarForm">
+    <div class="block">
+      <div class="wrap-label">
+        <label for="brand">
+          Brand
+        </label>
+        <input type="text" id="brand"
+               [placeholder]="'Enter brand'"
+               [ngModel]="brand"
+               formControlName="brand">
+      </div>
+      <div class="wrap-label">
+        <label for="model">
+          Model
+        </label>
+        <input type="text" id="model"
+               [placeholder]="'Enter model'"
+               [ngModel]="model"
+               formControlName="model">
+      </div>
+
+    </div>
+
+    <div class="block">
+      <div class="wrap-label">
+        <label for="engine">
+          Engine
+        </label>
+        <input type="text" id="engine"
+               [placeholder]="'Enter engine type'"
+               [ngModel]="engine"
+               formControlName="engine">
+      </div>
+
+      <div class="wrap-label">
+        <label for="price">
+          Price
+        </label>
+        <input type="text" id="price"
+               [placeholder]="'Enter price'"
+               [ngModel]="price"
+               formControlName="price">
+      </div>
+    </div>
+  </form>
+  <div class="btn-wrapper">
+    <button type="button" class="btn btn-green"
+            [disabled]="isFormChanged"
+            (click)="save()">Save</button>
   </div>
 </div>
