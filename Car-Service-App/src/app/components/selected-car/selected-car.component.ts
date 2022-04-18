@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {CarsService} from '../../servises/cars.service';
+import {Car} from '../add-edit-form/add-edit-form.config';
+import {Subscription} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 
 @Component({
@@ -10,21 +14,33 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class SelectedCarComponent implements OnInit {
 
-  public id = '';
-  public brand = '';
-  public model = '';
-  public engine = '';
-  public price = '';
-
-  public singleCarForm = new FormGroup({});
-  public initData = '';
-
   get isFormChanged(): boolean {
     return this.initData === JSON.stringify( this.singleCarForm?.value);
   }
 
-  constructor( private activateRoute: ActivatedRoute, private formBuilder: FormBuilder, ) {
-  }
+  constructor( private activateRoute: ActivatedRoute,
+               private router: Router,
+               private carsService: CarsService,
+               private formBuilder: FormBuilder
+               ) {}
+
+  public id = 0;
+  public brand = '';
+  public model = '';
+  public engine = '';
+  public price = 0;
+
+  public singleCarForm = new FormGroup({});
+  public initData = '';
+  public cars: Car[] = [];
+
+
+  private mappedCars: Subscription = this.carsService.data$.pipe(
+    map( cars => cars.map( car => car))
+  ).subscribe(cars => {
+    this.cars = cars;
+    console.log('this.data service-SELECTED', this.cars);
+  } );
 
   ngOnInit(): void {
     this.id = this.activateRoute.snapshot.params['id'];
@@ -46,10 +62,17 @@ export class SelectedCarComponent implements OnInit {
     });
   }
 
+  private updateCar( selectedCar: Car ): any {
+    return this.cars.push(selectedCar);
+  }
+
   public save(): void {
     if (this.singleCarForm.invalid) {
       return;
     }
+    this.updateCar(this.singleCarForm.value);
+    console.log('this cars save -->', this.cars);
+    this.router.navigateByUrl('/cars');
   }
 
 }

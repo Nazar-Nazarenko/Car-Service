@@ -6,8 +6,8 @@ export interface Car {
   model: string;
   fuel: string;
   id: number;
-  engine: string;
-  photo: string;
-  wiki: string;
+  engine?: string;
+  photo?: string;
+  wiki?: string;
   price: number;
 }
