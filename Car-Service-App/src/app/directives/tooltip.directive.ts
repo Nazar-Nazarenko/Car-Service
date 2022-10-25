@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Inject, Input, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostBinding, HostListener, Inject, Input, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 
 @Directive({
@@ -14,13 +14,17 @@ export class TooltipDirective {
                @Inject(DOCUMENT) private  document: Document,
   ) {}
 
+  @HostBinding('style.backgroundColor') background: string | undefined;
+
   @HostListener('mouseenter') onMouseEnter(): void {
+    this.background = 'red';
     if (!this.tooltip) {
       this.create();
     }
   }
 
   @HostListener('mouseleave') onMouseLeave(): void {
+    this.background = 'transparent';
     if (this.tooltip) {
       this.hide();
     }
