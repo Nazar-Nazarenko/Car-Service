@@ -14,6 +14,9 @@ export class CarsComponent implements OnInit {
   constructor(private carsService: CarsService) { }
 
   public cars: Car[] = [];
+  public receivedCarBrandName: Car = {
+    brand: '',
+  };
 
   public chosenCarModel = 'No car chosen yet...';
   public mappedCars: Subscription = this.carsService.data$.pipe(
@@ -23,9 +26,17 @@ export class CarsComponent implements OnInit {
     console.log('this.data service', this.cars);
   } );
 
-  public updateCar(): string {
-    console.log('here!)');
-    return this.chosenCarModel = 'Changed';
+  public filterCar( carItems: Car []): any {
+    const cars = [...carItems];
+    return cars.filter( item => item.brand !== this.receivedCarBrandName.brand );
+  }
+
+
+  public assignName(car: string): void {
+    console.log('car emitted', car);
+    this.receivedCarBrandName.brand = car;
+    this.filterCar(this.cars);
+    console.log('cars filtered', this.cars);
   }
 
   ngOnInit(): void {

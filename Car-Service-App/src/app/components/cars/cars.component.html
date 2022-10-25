@@ -2,7 +2,7 @@
   <div class="search">
     <app-add-edit-form
       [carModel]="chosenCarModel"
-      (carNameTriggered)="updateCar()"
+      (carNameValue)="assignName($event)"
     ></app-add-edit-form>
   </div>
   <ng-container *ngIf="cars.length else emptyCarsList">

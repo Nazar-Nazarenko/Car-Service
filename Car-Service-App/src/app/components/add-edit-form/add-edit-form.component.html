@@ -1,13 +1,13 @@
-<form [formGroup]="chooseCarBrand">
+<form [formGroup]="form" >
   <div class="input-search">
     <label>
       <input type="text"
-             placeholder="Enter car brand"
-             [(ngModel)]="carName"
-             formControlName="{{CONTROL_NAMES.carNameInput}}">
+             placeholder="Enter car name"
+             formControlName="carName">
     </label>
   </div>
-  <div class="entered">{{carName}}</div>
-  <div class="entered">{{carModel}}</div>
-  <button class="btn btn-green" type="button" (click)="save()">Submit</button>
+  <div class="entered">{{carModel}} {{carModel}}</div>
+  <button class="btn btn-green" type="button"
+          appStopPropagation
+          (click)="save()">Submit</button>
 </form>

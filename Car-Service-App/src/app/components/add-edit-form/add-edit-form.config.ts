@@ -3,11 +3,11 @@ export enum AddEditFormConfig {
 }
 export interface Car {
   brand: string;
-  model: string;
-  fuel: string;
-  id: number;
+  model?: string;
+  fuel?: string;
+  id?: number;
   engine?: string;
   photo?: string;
   wiki?: string;
-  price: number;
+  price?: number;
 }
