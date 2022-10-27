@@ -4,8 +4,13 @@ import {TimerComponent} from './components/timer/timer.component';
 import {CarsComponent} from './components/cars/cars.component';
 import {SelectedCarComponent} from './components/selected-car/selected-car.component';
 import {AuthGuard} from './servises/auth.guard';
+import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent
+  },
   {
     path: 'timer',
     component: TimerComponent

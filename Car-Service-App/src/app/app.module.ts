@@ -13,6 +13,8 @@ import { TooltipDirective } from './directives/tooltip.directive';
 import { ModalDirective } from './directives/modal.directive';
 import { ModalComponent } from './components/modal/modal.component';
 import { StopPropagationDirective } from './directives/stop-propagation.directive';
+import { HomeComponent } from './components/home/home.component';
+import { CardItemComponent } from './components/card-item/card-item.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { StopPropagationDirective } from './directives/stop-propagation.directiv
     ModalDirective,
     ModalComponent,
     StopPropagationDirective,
+    HomeComponent,
+    CardItemComponent,
   ],
   imports: [
     BrowserModule,

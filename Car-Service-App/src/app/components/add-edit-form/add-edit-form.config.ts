@@ -10,4 +10,5 @@ export interface Car {
   photo?: string;
   wiki?: string;
   price?: number;
+  country?: string;
 }
