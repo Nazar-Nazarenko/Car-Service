@@ -19,8 +19,8 @@ export class CarsService {
       country: '1'
     },
     {
-      brand: 'Porsche',
-      model: 'Macan',
+      brand: 'Mercedes',
+      model: 'E300',
       price: 65000,
       fuel: 'diesel',
       id: 2,

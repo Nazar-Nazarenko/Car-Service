@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {CarsService} from '../../servises/cars.service';
-import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {interval, Observable} from 'rxjs';
+import {filter, map, scan, take} from 'rxjs/operators';
 import {Car} from '../add-edit-form/add-edit-form.config';
 
-// tslint:disable-next-line:class-name
 export interface BtnValue {
  id: number;
  name: string;
@@ -18,7 +17,7 @@ export interface BtnValue {
 export class HomeComponent implements OnInit {
   public cars = this.carsService.data;
   public carsSelected: Car[] = [];
-  public isSelected = false;
+  public carBrands: string | undefined;
 
 
   public btn: BtnValue[] = [
@@ -28,11 +27,11 @@ export class HomeComponent implements OnInit {
     },
     {
       id: 1,
-      name: 'Germany vehicles'
+      name: 'German vehicles'
     },
     {
       id: 2,
-      name: 'Japan vehicles'
+      name: 'Japanese vehicles'
     },
     {
       id: 3,
@@ -45,35 +44,58 @@ export class HomeComponent implements OnInit {
   private jpnCar = 2;
   private amerCar = 3;
 
+  private actualIndex = '';
+
   constructor(private carsService: CarsService) { }
 
-  // tslint:disable-next-line:no-unused-expression
   ngOnInit(): void {
     this.carsSelected = this.cars;
+  }
+
+  private runBrands(): void {
+    interval(500).pipe(
+      take(this.cars.length),
+      filter( index => this.cars[index].country === this.actualIndex),
+      map( (index) => this.cars[index].brand),
+    )
+      .subscribe( result => {
+        this.carBrands = result;
+      }, error => null, () => console.log('complete'));
   }
 
   public showCard(value: BtnValue): void {
 
     if (value.id === this.germCar) {
       new Observable<Car[]>( observer => observer.next(this.cars)).pipe(
-        map( (value) => value.filter( items => items.country === '1'))
+        map( (value) => {
+          this.actualIndex = '1';
+          return  value.filter( items => items.country === '1');
+        })
       ).subscribe( items => {
         this.carsSelected = items;
+        this.runBrands();
       });
-      this.isSelected = true;
     }
     if (value.id === this.jpnCar) {
       new Observable<Car[]>( observer => observer.next(this.cars)).pipe(
-        map( (value) => value.filter( items => items.country === '2'))
+        map( (value) => {
+          this.actualIndex = '2';
+          return value.filter( items => items.country === '2');
+        })
       ).subscribe( items => {
         this.carsSelected = items;
+        this.runBrands();
       });
     }
     if (value.id === this.amerCar) {
       new Observable<Car[]>( observer => observer.next(this.cars)).pipe(
-        map( (value) => value.filter( items => items.country === '3'))
+        map( (value) => {
+          this.actualIndex = '3';
+          return value.filter( items => items.country === '3');
+        })
       ).subscribe( items => {
         this.carsSelected = items;
+        this.runBrands();
       });
     }
 
