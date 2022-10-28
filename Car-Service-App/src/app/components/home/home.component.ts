@@ -17,7 +17,7 @@ export interface BtnValue {
 export class HomeComponent implements OnInit {
   public cars = this.carsService.data;
   public carsSelected: Car[] = [];
-  public carBrands: string | undefined;
+  public carBrands: string[] = [];
 
 
   public btn: BtnValue[] = [
@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
       take(this.cars.length),
       filter( index => this.cars[index].country === this.actualIndex),
       map( (index) => this.cars[index].brand),
+      scan( (acc, v) => [...acc, v], [] as string[])
     )
       .subscribe( result => {
         this.carBrands = result;
