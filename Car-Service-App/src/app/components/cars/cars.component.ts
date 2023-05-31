@@ -12,6 +12,7 @@ import {map} from 'rxjs/operators';
 export class CarsComponent implements OnInit {
 
   constructor(private carsService: CarsService) { }
+  public searchCarName = '';
 
   public cars: Car[] = [];
   public receivedCarBrandName: Car = {
@@ -19,12 +20,6 @@ export class CarsComponent implements OnInit {
   };
 
   public chosenCarModel = 'No car chosen yet...';
-  public mappedCars: Subscription = this.carsService.data$.pipe(
-    map( cars => cars.map( car => car))
-  ).subscribe(cars => {
-    this.cars = cars;
-    console.log('this.data service', this.cars);
-  } );
 
   public filterCar( carItems: Car []): any {
     const cars = [...carItems];
@@ -40,6 +35,11 @@ export class CarsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.carsService.data$.pipe(
+      map( cars => cars.map( car => car))
+    ).subscribe(cars => {
+      this.cars = cars;
+    } );
   }
 
   removeCar(car: Car): void {

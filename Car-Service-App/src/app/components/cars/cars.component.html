@@ -1,14 +1,11 @@
 <div class="content">
   <div class="search">
-    <app-add-edit-form
-      [carModel]="chosenCarModel"
-      (carNameValue)="assignName($event)"
-    ></app-add-edit-form>
+    <input type="text" placeholder="Search by car name" [(ngModel)]="searchCarName">
   </div>
   <ng-container *ngIf="cars.length else emptyCarsList">
     <div class="wrapper">
       <div class="car-names-wrapper">
-        <app-car *ngFor="let car of cars" [carItem]="car"
+        <app-car *ngFor="let car of cars | searchByName: searchCarName" [carItem]="car"
                  [routerLink]="['/selected-car',
                  car.id,
                  car.brand,
