@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Car} from '../components/add-edit-form/add-edit-form.config';
 
 @Pipe({
   name: 'searchByName'
