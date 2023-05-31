@@ -5,7 +5,7 @@
   <ng-container *ngIf="cars.length else emptyCarsList">
     <div class="wrapper">
       <div class="car-names-wrapper">
-        <app-car *ngFor="let car of cars | searchByName: searchCarName" [carItem]="car"
+        <app-car *ngFor="let car of cars | searchByName: searchCarName: 'brand'" [carItem]="car"
                  [routerLink]="['/selected-car',
                  car.id,
                  car.brand,

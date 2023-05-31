@@ -4,13 +4,16 @@ import {Car} from '../components/add-edit-form/add-edit-form.config';
 @Pipe({
   name: 'searchByName'
 })
-export class SearchByNamePipe implements PipeTransform {
+export class SearchByNamePipe<T>  implements PipeTransform {
 
-  transform(itemsList: Car[], searchValue: string): Car[] {
+  transform(itemsList: T[], searchValue: string, property: keyof T): T[] {
     if ( itemsList.length === 0 || searchValue === '') {
       return itemsList;
     }
-    return itemsList.filter( item => item.brand.toLowerCase().indexOf( searchValue.toLowerCase()) !== -1);
+    return itemsList.filter(item => {
+      const value = String(item[property]).toLowerCase();
+      return value.includes(searchValue.toLowerCase());
+    });
   }
 
 }
